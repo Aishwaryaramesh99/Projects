@@ -1,0 +1,25 @@
+extends layout
+block content
+    div.container
+        .row
+            .col-md-6
+                p
+                form(name="additem",method="post",action="/create")
+                    input(name='_csrf', type='hidden', value=csrfToken)
+                    .well.well-sm
+                        h3 Add item
+                    div.form-group
+                        label.col-sm-4 Item Name
+                        div.col-sm-8
+                            input.form-control(placeholder='Milk',
+                                required=true,
+                                name='itemname',
+                                id='itemname'
+                                type='text',
+                                value=itemname)
+
+                        div.form-group
+                        label.col-sm-4
+                        div.col-sm-8
+                            br
+                            button.login.btn.btn-primary.btn-md(type='submit') Create

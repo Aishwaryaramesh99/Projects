@@ -1,0 +1,35 @@
+extends layout
+block content
+    br
+    br
+    br
+    div.container
+
+        div.row
+            .col-md-10
+                .panel.panel-primary
+                    .panel-heading
+                        h3.panel-title Shopping list
+                            .pull-right
+                                a.bg_info(href='/create')
+                                    span.label.label-info
+                                        span.glyphicon.glyphicon-plus.white
+                                        Create New
+                    .panel-body
+                        ul.list-group
+                        each item in items
+                            li.list-group-item
+                                div.form-group
+                                    div.col-sm-4
+                                        span.label.label-success #{item.itemname}
+                                    div.col-sm-4
+                                        form(name="update",method="post",action="/update")
+                                            input(type="hidden", name="itemname",value=item.itemname)
+                                            button.btn-sm.btn.btn-primary.btn-md(type='submit')
+                                                small BUY
+                                    div.col-sm-4
+                                        form(name="delete",method="post",action="/delete")
+                                            input(type="hidden", name="itemname",value=item.itemname)
+                                            button.btn-sm.btn.btn-danger.btn-md(type='submit')
+                                                small REMOVE
+                                br
